@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    java
 }
 
 group = "org.example"
@@ -10,6 +10,8 @@ repositories {
 }
 
 dependencies {
+    implementation("com.google.inject:guice:5.0.1")
+    implementation("org.jetbrains:annotations:13.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 }
