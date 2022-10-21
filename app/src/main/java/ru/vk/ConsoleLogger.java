@@ -3,7 +3,7 @@ package ru.vk;
 import org.jetbrains.annotations.NotNull;
 
 public class ConsoleLogger implements Logger {
-    private final @NotNull java.util.logging.Logger logger = java.util.logging.Logger.getLogger("");
+    private final @NotNull org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger("user");
 
     @Override
     public void doLog(String message) {
