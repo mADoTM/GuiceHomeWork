@@ -17,6 +17,6 @@ public class FileUtils {
         if(!file.exists()) {
             file.createNewFile();
         }
-        Files.write(Paths.get(fileName), (text + "\n").getBytes(), StandardOpenOption.APPEND);
+        Files.write(Paths.get(fileName), (text + "\n").getBytes(), StandardOpenOption.WRITE);
     }
 }
