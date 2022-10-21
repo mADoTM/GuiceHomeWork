@@ -1,7 +1,6 @@
 package ru.vk;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.matcher.Matchers;
 import com.google.inject.multibindings.Multibinder;
 import com.google.inject.name.Names;
 import org.jetbrains.annotations.NotNull;
@@ -17,13 +16,9 @@ public class ApplicationModule extends AbstractModule {
     }
     @Override
     protected void configure() {
-        bind(Application.class);
-        bind(String.class).annotatedWith(Names.named("logging_tag")).toInstance(tag);
-
         enableLoggers();
-        bindInterceptor(Matchers.any(),
-                Matchers.annotatedWith(InputLogAnnotation.class),
-                new InputLogManager(getProvider(Logger.class), tag));
+        bind(String.class).annotatedWith(Names.named("logging_tag")).toInstance(tag);
+        bind(Application.class);
     }
 
     private void enableLoggers() {
