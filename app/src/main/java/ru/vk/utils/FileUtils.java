@@ -19,13 +19,15 @@ public class FileUtils {
         File file = new File(fileName);
         var path = file.toPath();
 
-        var operation = StandardOpenOption.TRUNCATE_EXISTING;
-        if (file.exists() && filesUsingStatus.contains(fileName)) {
-            operation = StandardOpenOption.APPEND;
-        } else {
-            filesUsingStatus.add(fileName);
+        var operation = StandardOpenOption.CREATE_NEW;
+        if (file.exists()) {
+            operation = StandardOpenOption.TRUNCATE_EXISTING;
+            if(filesUsingStatus.contains(fileName)) {
+                operation = StandardOpenOption.APPEND;
+            }
         }
+        System.out.println(operation);
+        filesUsingStatus.add(fileName);
         Files.write(path, (text + "\n").getBytes(), operation);
-        System.out.println("end file log");
     }
 }
