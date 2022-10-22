@@ -26,7 +26,6 @@ public class FileUtils {
                 operation = StandardOpenOption.APPEND;
             }
         }
-        System.out.println(operation);
         filesUsingStatus.add(fileName);
         Files.write(path, (text + "\n").getBytes(), operation);
     }
